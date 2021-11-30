@@ -1,4 +1,3 @@
-import time
 import timeit
 
 
@@ -6,7 +5,7 @@ def profile(f):
     def calculate_execution_time(*args, **kwargs):
         start = timeit.default_timer()
         res = f(*args, **kwargs)
-        print("the execution time of function ", f.__name__, " is ", (timeit.default_timer() - start) * 1000, " ms")
+        print("the execution time of function ", f.__name__, " is ", (timeit.default_timer() - start) * 1000, "ms")
         return res
 
     return calculate_execution_time
@@ -29,11 +28,12 @@ class timer:
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        print("the execution time of this statement  is ", (timeit.default_timer() - self.start) * 1000, " ms")
+        print("the execution time of this statement  is ", (timeit.default_timer() - self.start) * 1000, "ms")
         return self
 
 
-result = some_function()
+if __name__ == '__main__':
+    result = some_function()
 
-with timer():
-    print(sum(range(1000)))
+    with timer():
+        print(sum(range(1000)))
